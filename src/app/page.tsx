@@ -1,23 +1,19 @@
-export default function Home() {
+import Hero from "@/components/home/Hero";
+import Philosophy from "@/components/home/Philosophy";
+import ObservatoryIntro from "@/components/home/ObservatoryIntro";
+import Explore from "@/components/home/Explore";
+import AboutPreview from "@/components/home/AboutPreview";
+import Conversation from "@/components/home/Conversation";
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#F8F6F2] text-[#1A1A1A]">
-      <section className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 text-center">
-        <p className="mb-8 text-sm uppercase tracking-[0.35em] text-[#8A6A3F]">
-          Project Observatory
-        </p>
-
-        <h1 className="text-5xl font-semibold leading-tight md:text-7xl">
-          Observe.
-          <br />
-          Understand.
-          <br />
-          Build.
-        </h1>
-
-        <p className="mt-10 max-w-2xl text-lg leading-8 text-[#5A5A5A]">
-          Observe deeply. Understand clearly. Build thoughtfully.
-        </p>
-      </section>
-    </main>
+    <>
+      <Hero />
+      <Philosophy />
+      <ObservatoryIntro />
+      <Explore />
+      <AboutPreview />
+      <Conversation />
+    </>
   );
 }
