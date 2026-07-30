@@ -1,29 +1,36 @@
+import Link from "next/link";
 import Section from "@/components/layout/Section";
 
 const sections = [
   {
     title: "Projects",
     description: "Things I've built, created, or helped bring to life.",
+    href: "/projects",
   },
   {
     title: "Research",
     description: "Investigations into questions that matter.",
+    href: "/research",
   },
   {
     title: "Writing",
     description: "Long-form essays, reflections, and explainers.",
+    href: "/writing",
   },
   {
     title: "Frameworks",
     description: "Structures designed to make complexity clearer.",
+    href: "/frameworks",
   },
   {
     title: "Courses",
     description: "Learning experiences designed for curious minds.",
+    href: "/courses",
   },
   {
     title: "Resources",
     description: "Templates, guides, and practical tools to use and adapt.",
+    href: "/resources",
   },
 ];
 
@@ -46,8 +53,9 @@ export default function Explore() {
 
         <div className="mt-10 divide-y divide-border">
           {sections.map((section) => (
-            <div
+            <Link
               key={section.title}
+              href={section.href}
               className="group flex flex-col gap-2 py-5 transition-colors md:flex-row md:items-center md:justify-between"
             >
               <h3 className="font-heading text-xl text-text-primary transition-transform duration-200 group-hover:translate-x-1">
@@ -57,7 +65,7 @@ export default function Explore() {
               <p className="max-w-md text-sm leading-6 text-text-secondary">
                 {section.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
