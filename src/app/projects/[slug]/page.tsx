@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import BackLink from "@/components/content/BackLink";
 import Section from "@/components/layout/Section";
 
-import { research } from "@/content/research";
+import { projects } from "@/content/projects";
 
-type ResearchPageProps = {
+type ProjectPageProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -13,30 +13,30 @@ type ResearchPageProps = {
 
 export async function generateMetadata({
   params,
-}: ResearchPageProps): Promise<Metadata> {
+}: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const item = research.find((researchItem) => researchItem.slug === slug);
+  const item = projects.find((project) => project.slug === slug);
 
   return {
-    title: item?.metaTitle ?? "Research | Project Observatory",
+    title: item?.metaTitle ?? "Projects | Project Observatory",
     description:
-      item?.metaDescription ?? "Research from Project Observatory.",
+      item?.metaDescription ?? "Projects from Project Observatory.",
   };
 }
 
-export default async function ResearchDetailPage({
+export default async function ProjectDetailPage({
   params,
-}: ResearchPageProps) {
+}: ProjectPageProps) {
   const { slug } = await params;
 
-  const item = research.find((researchItem) => researchItem.slug === slug);
+  const item = projects.find((project) => project.slug === slug);
 
   if (!item) {
     return (
       <Section className="py-24">
         <h1 className="font-heading text-4xl text-text-primary">
-          Research not found.
+          Project not found.
         </h1>
       </Section>
     );
@@ -45,11 +45,11 @@ export default async function ResearchDetailPage({
   return (
     <Section className="py-24">
       <div className="max-w-3xl">
-        <BackLink href="/research">Back to Research</BackLink>
+        <BackLink href="/projects">Back to Projects</BackLink>
 
         <p className="mt-8 text-sm uppercase tracking-[0.2em]">
           <span className="text-text-secondary">✦</span>{" "}
-          <span className="text-accent">Research</span>
+          <span className="text-accent">Project</span>
         </p>
 
         <h1 className="mt-6 font-heading text-5xl leading-tight text-text-primary">
@@ -82,17 +82,6 @@ export default async function ResearchDetailPage({
           </summary>
 
           <div className="mt-6 space-y-5 text-sm leading-6">
-            {item.methodology && (
-              <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-text-secondary">
-                  Methodology
-                </p>
-                <p className="mt-1 text-text-primary">
-                  {item.methodology}
-                </p>
-              </div>
-            )}
-
             {item.capabilities && item.capabilities.length > 0 && (
               <div>
                 <p className="text-xs uppercase tracking-[0.16em] text-text-secondary">
@@ -131,31 +120,31 @@ export default async function ResearchDetailPage({
         <div className="mt-16 space-y-12">
           <section>
             <h2 className="font-heading text-3xl text-text-primary">
-              Abstract
+              Why Observatory
             </h2>
 
             <p className="mt-4 text-lg leading-8 text-text-secondary">
-              {item.abstract}
+              {item.problem}
             </p>
           </section>
 
           <section>
             <h2 className="font-heading text-3xl text-text-primary">
-              Methodology
+              Choosing the Difficult Route
             </h2>
 
             <p className="mt-4 text-lg leading-8 text-text-secondary">
-              {item.methodology}
+              {item.approach}
             </p>
           </section>
 
           <section>
             <h2 className="font-heading text-3xl text-text-primary">
-              Full Study
+              What It Became
             </h2>
 
             <p className="mt-4 text-lg leading-8 text-text-secondary">
-              The full study can be shared upon request.
+              {item.outcome}
             </p>
           </section>
         </div>
